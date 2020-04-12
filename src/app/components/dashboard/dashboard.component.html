@@ -1,0 +1,53 @@
+<p>dashboard works!</p>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-12">
+
+      <div class="row">
+
+        <div class="col-lg-3 stack" [attr.id]="fruit.id" *ngFor="let fruit of data; let index = index">
+          <div><span><b>{{ fruit.name }}</b></span></div>
+          <br>
+          <br>
+          <br>
+
+          <div><span><b>{{ fruit.totalCount }}</b></span></div>
+
+          <br>
+          <br>
+
+          <div class="row" *ngIf="isActAllowed">
+            <div class="col-lg-6">
+              <button (click)="addToCart(fruit.id)" class="button-act">+</button>
+            </div>
+            <div class="col-lg-6">
+              <button (click)="removeFromCart(fruit.id)" class="button-act">-</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <br>
+
+  <div class="text-center col-lg-9">BASKET STACK</div>
+  <div class="row">
+    <div class="offset-lg-3 stack col-lg-3" id="output-stack">
+      <div *ngFor="let item of stackData">
+        <div [attr.id]="item" class="stack-item">{{ item }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isError" class="red">Unallowed operation</div>
+
+</div>
